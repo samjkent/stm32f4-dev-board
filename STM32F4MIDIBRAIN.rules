@@ -1,0 +1,83 @@
+
+(rules PCB STM32F4MIDIBRAIN
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 1405)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 3.6)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.4)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND "/LSE_IN" "/HSE_IN" "Net-(C4-Pad1)" /VUSB +3V3 /DM /DP
+    "/I2C1_SDA" "/I2C1_SCL" "/I2C3_SDA" "/I2C3_SCL" "/LSE_OUT" "/HSE_OUT" /nRST "Net-(C5-Pad1)"
+    "Net-(C6-Pad1)" "Net-(C7-Pad1)" "Net-(D1-Pad2)" "Net-(D2-Pad1)" "Net-(D3-Pad1)" "Net-(J2-PadA5)" "Net-(J2-PadB5)" "Net-(J3-Pad1)"
+    "Net-(J3-Pad2)" "Net-(J3-Pad3)" "Net-(J3-Pad4)" "/SPI2_MOSI" "/SPI2_MISO" "Net-(J3-Pad7)" "Net-(J3-Pad8)" "Net-(J5-Pad1)"
+    "/SPI3_MOSI" "/SPI3_MISO" "/SPI3_CLK" "Net-(J5-Pad6)" /PD2 "/UART_RX" "/UART_TX" "Net-(J7-Pad1)"
+    "Net-(J7-Pad2)" "Net-(J7-Pad5)" "Net-(J7-Pad6)" "Net-(J7-Pad7)" "Net-(J7-Pad8)" /TDI /SWDCLK /SWDIO
+    "/UART1_RX" "/UART1_TX" "Net-(J9-Pad6)" "Net-(J9-Pad5)" /SWO "Net-(J9-Pad3)" "Net-(J9-Pad2)" "Net-(J9-Pad1)"
+    "Net-(J10-Pad7)" "Net-(J10-Pad6)" "Net-(J10-Pad5)" "Net-(J10-Pad4)" "/SPI2_CLK" "Net-(J10-Pad2)" /BOOT0 "Net-(R6-Pad1)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
